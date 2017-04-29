@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+		"http://www.w3.org/TR/html4/strict.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Page from basic-page</title>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<style media="screen" type="text/css">
+
+#session {
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    padding: 100px;
+    font-weight: bold;
+
+border: 3px solid red;
+    position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+}
+
+</style>
+</head>
+
+<body  id="arriere" onload="return ran_col()">
+
+<center>
+	<script type="text/javascript">
+		document.writeln ('hostname', ':\t', location['hostname'])
+	</script>
+</center>
+
+<div id="session" >
+
+</div>
+
+<script type="text/javascript">
+            function ran_col() { //function name
+                var color = '#'; // hexadecimal starting symbol
+                var letters = ['8D5454','548D8B','B3C130','C15B30','C6E81F','39981C','1C4E98','D2ABD0','CB293F','CB29CB','265B7A']; //Set your colors here
+                color += letters[Math.floor(Math.random() * letters.length)];
+                document.getElementById('session').style.background = color; // Setting the random color on your div element.
+                document.getElementById('arriere').style.background = stringToColour(location['hostname']); // Setting the random color on your div element.
+            }
+            var stringToColour = function(str) {
+			  var hash = 0;
+			  for (var i = 0; i < str.length; i++) {
+				hash = str.charCodeAt(i) + ((hash << 5) - hash);
+			  }
+			  var colour = '#';
+			  for (var i = 0; i < 3; i++) {
+				var value = (hash >> (i * 8)) & 0xFF;
+				colour += ('00' + value.toString(16)).substr(-2);
+			  }
+			  return colour;
+			}
+</script>
+
+<div id="artifact">
+	<h2>
+	PROJECT_VERSION
+	</h2>
+</div>
+
+
+</body>
+
+
+</html>
