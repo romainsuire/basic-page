@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_basic-page" default="compile.module.basic-page">
+  <dirname property="module.basic-page.basedir" file="${ant.file.module_basic-page}"/>
+  
+  <property name="module.jdk.home.basic-page" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.basic-page" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.basic-page" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.basic-page" value="-encoding UTF-8 -source 1.5 -target 1.5 ${compiler.args}"/>
+  
+  <property name="basic-page.output.dir" value="${module.basic-page.basedir}/target/classes"/>
+  <property name="basic-page.testoutput.dir" value="${module.basic-page.basedir}/target/test-classes"/>
+  
+  <path id="basic-page.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="basic-page.module.production.classpath">
+    <path refid="${module.jdk.classpath.basic-page}"/>
+    <path refid="library.maven:_org.wildfly.swarm:undertow:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:container:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:spi:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-api:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:2.0.2.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:bootstrap:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.modules:jboss-modules:1.5.2.final.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.17.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api-runtime:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:io:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:logging:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:ee:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:naming:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.el:jboss-el-api_3.0_spec:1.0.7.final.classpath"/>
+    <path refid="library.maven:_org.glassfish:javax.el-impl:3.0.1-b08-jbossorg-1.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:request-controller:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm-all:5.0.4.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec:1.1.1.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-servlet:1.4.11.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-core:1.4.11.final.classpath"/>
+    <path refid="library.maven:_org.jboss.xnio:xnio-api:3.3.6.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:meta-spi:2017.4.0.classpath"/>
+  </path>
+  
+  <path id="basic-page.runtime.production.module.classpath">
+    <pathelement location="${basic-page.output.dir}"/>
+    <path refid="library.maven:_org.wildfly.swarm:undertow:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:container:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:spi:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-api:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:2.0.2.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:bootstrap:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.modules:jboss-modules:1.5.2.final.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.17.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api-runtime:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:io:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:logging:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:ee:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:naming:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.el:jboss-el-api_3.0_spec:1.0.7.final.classpath"/>
+    <path refid="library.maven:_org.glassfish:javax.el-impl:3.0.1-b08-jbossorg-1.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:request-controller:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm-all:5.0.4.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec:1.1.1.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-servlet:1.4.11.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-core:1.4.11.final.classpath"/>
+    <path refid="library.maven:_org.jboss.xnio:xnio-api:3.3.6.final.classpath"/>
+    <path refid="library.maven:_org.jboss.xnio:xnio-nio:3.3.6.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:meta-spi:2017.4.0.classpath"/>
+  </path>
+  
+  <path id="basic-page.module.classpath">
+    <path refid="${module.jdk.classpath.basic-page}"/>
+    <pathelement location="${basic-page.output.dir}"/>
+    <path refid="library.maven:_org.wildfly.swarm:undertow:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:container:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:spi:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-api:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:2.0.2.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:bootstrap:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.modules:jboss-modules:1.5.2.final.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.17.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api-runtime:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:io:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:logging:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:ee:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:naming:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.el:jboss-el-api_3.0_spec:1.0.7.final.classpath"/>
+    <path refid="library.maven:_org.glassfish:javax.el-impl:3.0.1-b08-jbossorg-1.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:request-controller:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm-all:5.0.4.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec:1.1.1.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-servlet:1.4.11.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-core:1.4.11.final.classpath"/>
+    <path refid="library.maven:_org.jboss.xnio:xnio-api:3.3.6.final.classpath"/>
+    <path refid="library.maven:_org.jboss.xnio:xnio-nio:3.3.6.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:meta-spi:2017.4.0.classpath"/>
+  </path>
+  
+  <path id="basic-page.runtime.module.classpath">
+    <pathelement location="${basic-page.testoutput.dir}"/>
+    <pathelement location="${basic-page.output.dir}"/>
+    <path refid="library.maven:_org.wildfly.swarm:undertow:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:container:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:spi:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-api:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6.classpath"/>
+    <path refid="library.maven:_org.jboss:jandex:2.0.2.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:bootstrap:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.modules:jboss-modules:1.5.2.final.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.17.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:config-api-runtime:1.0.3.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:io:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:logging:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:ee:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:naming:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.el:jboss-el-api_3.0_spec:1.0.7.final.classpath"/>
+    <path refid="library.maven:_org.glassfish:javax.el-impl:3.0.1-b08-jbossorg-1.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:request-controller:2017.4.0.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0-alpha-9.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm-all:5.0.4.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec:1.1.1.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-servlet:1.4.11.final.classpath"/>
+    <path refid="library.maven:_io.undertow:undertow-core:1.4.11.final.classpath"/>
+    <path refid="library.maven:_org.jboss.xnio:xnio-api:3.3.6.final.classpath"/>
+    <path refid="library.maven:_org.jboss.xnio:xnio-nio:3.3.6.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_org.wildfly.swarm:meta-spi:2017.4.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.basic-page">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.basic-page">
+    <patternset refid="excluded.from.module.basic-page"/>
+  </patternset>
+  
+  
+  <target name="compile.module.basic-page" depends="compile.module.basic-page.production,compile.module.basic-page.tests" description="Compile module basic-page"/>
+  
+  <target name="compile.module.basic-page.production" depends="register.custom.compilers" description="Compile module basic-page; production classes"/>
+  
+  <target name="compile.module.basic-page.tests" depends="register.custom.compilers,compile.module.basic-page.production" description="compile module basic-page; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.basic-page" description="cleanup module">
+    <delete dir="${basic-page.output.dir}"/>
+    <delete dir="${basic-page.testoutput.dir}"/>
+  </target>
+</project>

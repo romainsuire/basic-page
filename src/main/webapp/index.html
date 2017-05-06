@@ -34,7 +34,16 @@ border: 3px solid red;
 
 <center>
 	<script type="text/javascript">
-		document.writeln ('hostname', ':\t', location['hostname'])
+		document.writeln ('hostname', ':\t', displayHostname(location['hostname']))
+
+		function displayHostname(str) {
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("GET", "http://"+str+":8080/rest/hostname", false);
+				xhttp.setRequestHeader("Content-type", "application/json");
+				xhttp.send();
+				var response = xhttp.responseText;
+				return response
+			}
 	</script>
 </center>
 
@@ -62,6 +71,9 @@ border: 3px solid red;
 			  }
 			  return colour;
 			}
+
+
+
 </script>
 
 <div id="artifact">
